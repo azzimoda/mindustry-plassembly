@@ -34,7 +34,7 @@ jump loopname! greaterThan var! 0
 !!
 ```
 
-### Macrod usage
+### Macro usage
 
 To use a macro, type its name ending with `!` and list arguments. To provide a body-argument, use keywords `$begin` and `$end`.
 
