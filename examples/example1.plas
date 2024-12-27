@@ -1,0 +1,30 @@
+!printl msg
+    print msg!
+    print "\n"
+!!
+
+!dec var
+    op sub var! 1
+!!
+
+!for loopname var &body
+    loopname!:
+    dec! var!
+    &body
+    jump loopname! greaterThan var! 0
+!!
+
+set var 10
+print "var="
+printl! var
+
+for! for1 var
+$begin
+    print var
+    printl! "..."
+    wait 1
+$end
+
+printl! "Bang!"
+printflush message1
+

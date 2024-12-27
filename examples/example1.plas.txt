@@ -1,0 +1,14 @@
+set var 10
+print "var="
+print var
+print "\n"
+for1:
+op sub var 1
+print var
+print "..."
+print "\n"
+wait 1
+jump for1 greaterThan var 0
+print "Bang!"
+print "\n"
+printflush message1
