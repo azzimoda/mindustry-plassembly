@@ -1,0 +1,19 @@
+!inc x
+    op add x! x! 1
+!!
+
+!times n &body
+    set #i 0
+    #loop:
+        &body
+        inc! #i
+    jump #loop lessThan #i n!
+!!
+
+times! 5
+$begin
+    print #i
+    print "\n"
+$end
+printflush message1
+

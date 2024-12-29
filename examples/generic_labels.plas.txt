@@ -1,0 +1,7 @@
+set __GI_0_i 0
+__GI_1_loop:
+print #i
+print "\n"
+op add __GI_0_i __GI_0_i 1
+jump __GI_1_loop lessThan __GI_0_i 5
+printflush message1

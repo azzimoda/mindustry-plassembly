@@ -3,7 +3,7 @@ print "var="
 print var
 print "\n"
 for1:
-op sub var 1
+op sub var var 1
 print var
 print "..."
 print "\n"

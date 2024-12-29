@@ -4,7 +4,7 @@
 !!
 
 !dec var
-    op sub var! 1
+    op sub var! var! 1
 !!
 
 !for loopname var &body
