@@ -44,6 +44,9 @@ impl<'a> Lexer<'a> {
     }
 
     fn next_line(&mut self) -> Vec<Token> {
+        while Regex::new(r"^\\.*$").unwrap().is_match(self.lines[self.line]) {
+            self.line += 1;
+        }
         let token_re = Regex::new(Self::TOKEN_RE).unwrap();
         let tokens: Vec<Token> = token_re
             .find_iter(self.lines[self.line])
