@@ -12,7 +12,16 @@ PLAssembly is a interpreter and a programming language based on assembly languag
 !!
 ```
 
-where `<params>` is a list of parameters separated with spacases. A parameter can be a simple word (`param1`) or a block-parameter (`&block1`); the `<body>` consists of lines of Mindustry assemby code with references to the parameters (`param1!`) and block-parameters (`&block1`). Also it is possible convert a parameter into a label (parameter: `label1`; reference: `label1!:`; argument: `myLabel`; result: `myLabel!`). Also you can use macros inside others, they will be expanded too.
+where `<params>` is a list of parameters separated with spacases. A parameter can be a simple word (`param1`) or a block-parameter (`&block1`).
+
+The `<body>` consists of lines of Mindustry assembly code with additional kinds tokens:
+
+- reference to parameter, like `param1!`;
+- reference to block-parameter, like `&block1`;
+- label-reference to parameter, like `param1!:` (parameter: `label1`; reference: `label1!:`; argument: `myLabel`; result: `myLabel!`);
+- generic identifiers and labels, like `#ident` and `#label:`; after expanding a macro, such identifier of label will be converted into a unique name; it is useful with labels in general.
+
+You can use macros inside others, they will be expanded too.
 
 Examples:
 
@@ -26,11 +35,11 @@ print "\n"
 op sub var! 1
 !!
 
-!for loopname var &body
-loopname!:
+!for var &body
+#loop:
 dec! var!
 &body
-jump loopname! greaterThan var! 0
+jump #loop greaterThan var! 0
 !!
 ```
 
@@ -45,7 +54,7 @@ set var 10
 print "var="
 printl! var
 
-for! for1 var
+for! var
 $begin
 print var
 printl! "..."
@@ -64,14 +73,14 @@ set var 10
 print "var="
 print var
 print "\n"
-for1:
+__GI_0_loop:
 op sub var 1
 print var
 print "..."
 print "\n"
 printflush message1
 wait 1
-jump for1 greaterThan var 0
+jump __GI_0_loop greaterThan var 0
 print "Bang!"
 print "\n"
 printflush message1
